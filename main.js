@@ -22,7 +22,7 @@ class TestEntity {
 	}
 	changeAnimator(newAnimator) {
 		this.animator = newAnimator;
-		newAnimator.play()
+		newAnimator.play();
 	}
 }
 
