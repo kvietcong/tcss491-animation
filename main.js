@@ -2,6 +2,7 @@ const gameEngine = new GameEngine();
 
 const assetManager = new AssetManager();
 
+assetManager.queueDownload("./shepherd.png");
 assetManager.queueDownload("./skeleton.png");
 assetManager.queueDownload("./girl.png");
 
@@ -36,7 +37,7 @@ assetManager.downloadAll(() => {
 	const skeletonWidth = skeleton.width / skeletonFrameAmount;
 	const skeletonHeight = skeleton.height / 5;
 	const skeletonAnimationInfo = {
-		stillFrame: { frameAmount: 0, startX: 0, startY: 0 },
+		stillFrame: { frameAmount: 1, startX: 0, startY: 0 },
 		idle: { frameAmount: skeletonFrameAmount, startX: 0, startY: skeletonHeight * 0 },
 		derp: { frameAmount: skeletonFrameAmount, startX: 0, startY: skeletonHeight * 1 },
 		walk: { frameAmount: skeletonFrameAmount, startX: 0, startY: skeletonHeight * 2 },
@@ -55,7 +56,7 @@ assetManager.downloadAll(() => {
 	const girlWidth = girl.width / girlFrameAmount;
 	const girlHeight = girl.height / 4;
 	const girlAnimationInfo = {
-		stillFrame: { frameAmount: 0, startX: 0, startY: 0 },
+		stillFrame: { frameAmount: 1, startX: 0, startY: 0 },
 		runForward: { frameAmount: girlFrameAmount, startX: 0, startY: girlHeight * 0 },
 		runLeft: { frameAmount: girlFrameAmount, startX: 0, startY: girlHeight * 1 },
 		runRight: { frameAmount: girlFrameAmount, startX: 0, startY: girlHeight * 2 },
@@ -66,6 +67,41 @@ assetManager.downloadAll(() => {
         girl, "runForward", girlAnimationInfo,
         girlWidth, girlHeight,
         frameDuration, scale = 5.2,
+	);
+
+	const shepherd = assetManager.getAsset("./shepherd.png");
+	const shepherdWidth = shepherd.width / 13;
+	const shepherdHeight = shepherd.height / 21;
+	const shepherdAnimationInfo = {
+		stillFrame: { frameAmount: 1, startX: 0, startY: shepherdHeight * 10 },
+
+		runBack: { frameAmount: 9, startX: 0, startY: shepherdHeight * 8 },
+		runLeft: { frameAmount: 9, startX: 0, startY: shepherdHeight * 9 },
+		runForward: { frameAmount: 9, startX: 0, startY: shepherdHeight * 10 },
+		runRight: { frameAmount: 9, startX: 0, startY: shepherdHeight * 11 },
+
+		spellBack: { frameAmount: 7, startX: 0, startY: shepherdHeight * 0 },
+		spellLeft: { frameAmount: 7, startX: 0, startY: shepherdHeight * 1 },
+		spellForward: { frameAmount: 7, startX: 0, startY: shepherdHeight * 2 },
+		spellRight: { frameAmount: 7, startX: 0, startY: shepherdHeight * 3 },
+
+		pokeBack: { frameAmount: 8, startX: 0, startY: shepherdHeight * 4 },
+		pokeLeft: { frameAmount: 8, startX: 0, startY: shepherdHeight * 5 },
+		pokeForward: { frameAmount: 8, startX: 0, startY: shepherdHeight * 6 },
+		pokeRight: { frameAmount: 8, startX: 0, startY: shepherdHeight * 7 },
+
+		swipeBack: { frameAmount: 6, startX: 0, startY: shepherdHeight * 12 },
+		swipeLeft: { frameAmount: 6, startX: 0, startY: shepherdHeight * 13 },
+		swipeForward: { frameAmount: 6, startX: 0, startY: shepherdHeight * 14 },
+		swipeRight: { frameAmount: 6, startX: 0, startY: shepherdHeight * 15 },
+
+		"pray/die": { frameAmount: 6, startX: 0, startY: shepherdHeight * 20 },
+	};
+
+	animators.shepherd = new Animator(
+        shepherd, "runForward", shepherdAnimationInfo,
+        shepherdWidth, shepherdHeight,
+        frameDuration, scale = 5,
 	);
 
 	animator = animators.skeleton;
