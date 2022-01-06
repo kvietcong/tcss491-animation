@@ -10,12 +10,47 @@
     <script type="text/javascript" src="./gameengine.js"></script>
     <script type="text/javascript" src="./util.js"></script>
     <script type="text/javascript" src="./animator.js"></script>
-    <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./main.js" defer></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        body > * {
+            margin: auto;
+        }
+
+        #controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #controls > *, #controls select, #controls button {
+            padding: 15px;
+        }
+
+        #controls > div > input {
+            margin: 0 15px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="gameWorld" width="1024" height="768" style="background: white; border: 1px solid black"></canvas>
-    <button onclick="playAll()">Play</button>
-    <button onclick="pauseAll()">Pause</button>
-    <button onclick="resetAll()">Reset</button>
+    <canvas id="gameWorld" width="320" height="320" style="background: white; border: 1px solid black"></canvas>
+    <section id="controls" class="center-column">
+    </section>
+    <form id="sprite-change">
+        <input type="radio" value="skeleton" name="sprite" checked>Skeleton Sprite</input>
+        <input type="radio" value="girl" name="sprite">Girl Sprite</input>
+        <button type="submit">Change Sprite</button>
+    </form>
 </body>
 </html>
